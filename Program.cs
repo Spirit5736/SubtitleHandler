@@ -6,9 +6,10 @@ try
     TimeSpan additionalTime = new TimeSpan(0, 0, 0, 5, 880);
     string[] file = File.ReadAllLines(filePath);
     SubtitleProcessor subtitleProcessor = new SubtitleProcessor();
-    List<SubtitleModel> subtitleItems = subtitleProcessor.DivideSubtitles(file);
-    List<SubtitleModel> itemsWithAddedTimes = subtitleItems.AddTime(additionalTime);
-    List<SubtitleModel> itemsWithSameTimes = subtitleItems.FindSameSeconds();
+    List<SubtitleModel> subtitleItemsForAddingTime = new List<SubtitleModel>(subtitleProcessor.DivideSubtitles(file));
+    List<SubtitleModel> subtitleItemsForSameTime = new List<SubtitleModel>(subtitleProcessor.DivideSubtitles(file));
+    List<SubtitleModel> itemsWithAddedTimes = subtitleItemsForAddingTime.AddTime(additionalTime);
+    List<SubtitleModel> itemsWithSameTimes = subtitleItemsForSameTime.FindSameSeconds();
 
     using (TextWriter textWriter = new StreamWriter("napisy z poprawionym czasem.srt"))
     {
