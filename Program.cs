@@ -16,7 +16,7 @@ try
         {
             SubtitleModel item = itemsWithAddedTimes[i];
             textWriter.WriteLine(string.Format("{0}", i + 1));
-            textWriter.WriteLine($"{item.StartTime} --> {item.EndTime}");
+            textWriter.WriteLine($"{item.StartTime.ToString(@"hh\:mm\:ss\.fff")} --> {item.EndTime.ToString(@"hh\:mm\:ss\.fff")}");
             foreach (var text in item.Text)
             {
                 textWriter.WriteLine($"{text}");
@@ -31,7 +31,7 @@ try
         {
             SubtitleModel item = itemsWithSameTimes[i];
             textWriter.WriteLine(string.Format("{0}", i + 1));
-            textWriter.WriteLine($"{item.StartTime} --> {item.EndTime}");
+            textWriter.WriteLine($"{item.StartTime.ToString(@"hh\:mm\:ss\.fff")} --> {item.EndTime.ToString(@"hh\:mm\:ss\.fff")}");
             foreach (var text in item.Text)
             {
                 textWriter.WriteLine($"{text}");
